@@ -1,0 +1,234 @@
+/* Definir variables */
+:root {
+  --amarillo: #F49818; /* Amarillo */
+  --azul: #2B5170; /* azul */
+  --fondo_blanco:  #FFF;
+  --amarillo_bajito:#FBF1D1;
+  
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url('../img/b.jpg');
+      background-size: cover;
+  }
+  
+  
+
+  .container-form {
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, .1);
+    height: 420px;
+    max-width: 900px;
+    transition: all 1s ease;
+    margin: 10px;
+  }
+  
+  .information {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: var(--fondo_blanco);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative; /* Agregado para posicionar con respecto a este elemento */
+  }
+  
+  .info-childs {
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .info-childs img {
+    width: 70%;
+    padding: 0 30px;
+  }
+  
+  .info-childs h2 {
+    font-size: 1.5rem;
+    color: black;
+  }
+  
+  .info-childs p {
+    margin: 15px 0 ;
+    color: var(--azul);
+  }
+  
+  .info-childs input {
+    background-color: transparent;
+    outline: none;
+    border: solid 2px #9191bd;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #9191bd;
+    cursor: pointer;
+    transition: background-color .3s ease;
+  }
+  
+  .info-childs input:hover {
+    background-color: #9191bd;
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .form-information {
+    top: 2cm; /* Ajusta la distancia según tus necesidades */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    text-align: center;
+    background-color: var(--azul);
+    border-radius: 20px 20px 20px 20px; /* Ajusta la propiedad border-radius para darle borde solo a la esquina superior derecha */
+    /*position: absolute; /* Cambiado a absolute */*
+    left: 50%; /* Mueve el centro de .form-information al centro de .information */
+    transform: translateX(-10%); /* Corrige la posición para centrar .form-information */
+  }
+  
+  .form-information-childs {
+    padding: 20px; /* Ajusta el padding según sea necesario */
+  position: relative; /* Agrega posición relativa */
+  }
+  
+  .form-information-childs h2 {
+    color: black;
+    font-size: 2rem;
+  }
+
+  #aviso {
+  position: absolute;
+  bottom: 10px; /* Ajusta la distancia desde la parte inferior según sea necesario */
+  left: 50%; /* Centra el elemento horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar correctamente */
+}
+  
+  .form-information-childs p {
+    /*color: #555;*/
+
+font-size: 12px;
+  color: white;
+  margin: 10px 0 0 0;
+
+  }
+  
+  .icons {
+    margin: 15px 0;
+  }
+  
+  .icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    border: solid thin #9191bd;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .icons i:hover {
+    background-color: #c7c7f3;
+    color: #fff;
+  }
+  
+  .form {
+    /*margin: 30px 0 0 0;*/
+    margin: 0; /* Elimina el margen del formulario */
+  }
+  
+  .form label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .form label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+  }
+  
+  .form label i {
+    color: #a7a7a7;
+  }
+  
+  .form input[type="submit"] {
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+    background-color: var(--amarillo);
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .form input[type="submit"]:hover {
+    background-color: #7a7a9a;
+  }
+  
+  .hide {
+    position: absolute;
+    transform: translateY(-300%);
+  }
+  
+  /*RESPONSIVE FORM*/
+  
+  @media screen and (max-width:750px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  
+  @media screen and (max-width:580px) {
+    html {
+      font-size: 10px;
+    }
+  
+    .container-form {
+      height: auto;
+      flex-direction: column;
+    }
+  
+    .information {
+      width: 100%;
+      padding: 20px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0;
+    }
+  
+    .form-information {
+      width: 100%;
+      padding: 20px;
+      border-bottom-left-radius: 20px;
+      border-top-right-radius: 0;
+    }
+  }
+
+  .form-information-childs > div {
+  margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+}

@@ -1,0 +1,299 @@
+/* Definir variables */
+:root {
+  --amarillo: #F3F4E8; /* Amarillo */
+  --azul: #0F920F; /* azul */
+  --fondo_blanco:  #F3F4E8;
+  --amarillo_bajito:#FBF1D1;
+  
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-repeat: no-repeat;
+      background: url('../img/fondo.png') no-repeat center center fixed;;      
+      background-size: 100% 100%;
+      //*background-image: url('../img/PORTADA.jpg');*/
+      background-size: cover;
+  
+   
+  }
+
+  
+  
+
+  .container-form {
+    display: flex; 
+    border: 5px;   
+    border-radius: 20px;
+    /*box-shadow: 0 0 0 rgba(0, 0, 0, .1);*/
+    height: 300px;
+    max-width: 700px;
+    transition: all 1s ease;
+    margin: 10px;
+  }
+  
+  .information {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: var(--fondo_blanco);
+    border-left: 2px solid #your_border_color; /* Agregar un borde solo a la izquierda */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: relative;
+  }
+  
+  .info-childs {
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .info-childs img {
+    width: 70%;
+    padding: 0 30px;
+  }
+  
+  .info-childs h2 {
+    font-size: 1.5rem;
+    color: black;
+  }
+  
+  .info-childs p {
+    margin: 15px 0 ;
+    color: var(--azul);
+  }
+  
+  .info-childs input {
+    background-color: transparent;
+    outline: none;
+    border: solid 2px #9191bd;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #9191bd;
+    cursor: pointer;
+    transition: background-color .3s ease;
+  }
+  
+  .info-childs input:hover {
+    background-color: #9191bd;
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .form-information {
+    top: 2cm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    text-align: center;
+    background-color: var(--azul);
+    border-radius: 0 20px 20px 0;
+    border-right: 2px solid #tu_color_de_borde; /* Ajustar el color del borde derecho */
+    /* position: absolute; /* Cambiado a absolute */*
+    /*left: 50%;
+    transform: translateX(-10%);*/
+  }
+  
+  .form-information-childs {
+    padding: 20px; /* Ajusta el padding según sea necesario */
+  position: relative; /* Agrega posición relativa */
+  }
+  
+  .form-information-childs h2 {
+    color: black;
+    font-size: 2rem;
+  }
+
+
+
+#aviso {
+  white-space: nowrap; /* Asegura que el contenido esté en una sola línea */
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#aviso p {
+  font-size: 9px;
+  color: white;
+  margin: 0; /* Elimina el margen para evitar espacio adicional */
+}
+
+
+  .form-information-childs p {
+    /*color: #555;*/
+
+font-size: 12px;
+  color: white;
+  margin: 10px 0 0 0;
+
+  }
+  
+  .icons {
+    margin: 15px 0;
+  }
+  
+  .icons i {
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #9191bd;
+    border: solid thin #9191bd;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .icons i:hover {
+    background-color: #c7c7f3;
+    color: #fff;
+  }
+  
+  .form {
+    /*margin: 30px 0 0 0;*/
+    margin: 0; /* Elimina el margen del formulario */
+  }
+  
+  .form label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  .form label input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+  }
+  
+  .form label i {
+    color: #a7a7a7;
+  }
+  
+  .form input[type="submit"] {
+    width: 80%;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+    background-color: var(--fondo_blanco);
+    color: black;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, .1);
+  }
+  
+  .form input[type="submit"]:hover {
+    background-color: #F49818;
+  }
+
+  #btn_enviar_cambio {
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+    background-color: var(--amarillo);
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+  
+  #btn_enviar_cambio:hover {
+    background-color: #7a7a9a;
+  }
+  
+  .hide {
+    position: absolute;
+    transform: translateY(-300%);
+  }
+  
+  /*RESPONSIVE FORM*/
+  
+  @media screen and (max-width:750px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  
+  @media screen and (max-width:580px) {
+    html {
+      font-size: 10px;
+    }
+  
+    .container-form {
+      height: auto;
+      flex-direction: column;
+    }
+  
+    .information {
+      width: 100%;
+      padding: 20px;
+      border-radius: 20px 20px 20px 20px; /* Ajusta la propiedad border-radius para darle borde solo a la esquina superior derecha */
+      /*
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0;
+      */
+    }
+  
+    .form-information {
+      width: 100%;
+      padding: 20px;
+      border-bottom-left-radius: 20px;
+      border-top-right-radius: 0;
+    }
+  }
+
+  .form-information-childs > div {
+  margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Asegura que ambos elementos estén en el mismo nivel en dispositivos móviles */
+@media screen and (max-width: 580px) {
+  .container-form {
+    flex-direction: column;
+  }
+
+  .information,
+  .form-information {
+    width: 95%;
+    border-radius: 20px;
+  }
+
+  .form-information {
+    margin-top: -25px;
+    transform: translateX(3%); /* Corrige la posición para centrar .form-information */    
+    height: 410px;
+    
+  }
+
+  .information {    
+    transform: translateX(3%); /* Corrige la posición para centrar .form-information */
+    
+  }
+
+}

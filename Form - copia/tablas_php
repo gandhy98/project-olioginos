@@ -1,0 +1,155 @@
+
+
+$axid_empresa = $_POST['txtid_empresa'];	
+$axbuscar = $_POST['txtbuscar_canales'];	
+$axtipoorden = $_POST['txttipoorden'];
+$axorden = $_POST['txtorden'];	
+$nombreTabla = 'AREAS_TRABAJO';
+$axfiltro_buscar = $_POST['txtfiltro_buscar'];	
+
+if($axbuscar ==''){
+
+	if($axtipoorden==''){
+
+		$SQLListar ="SELECT TOP 10 *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY ID_AREA ASC";
+		$axverificar = 10;    
+
+	}elseif($axtipoorden=='AREA'){
+
+		if($axfiltro_buscar=''){
+			$SQLListar ="SELECT *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY AREA_TRABAJO $axorden";	
+		}else{
+			$SQLListar ="SELECT *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' AND AREA_TRABAJO LIKE '%".$axbuscar."%' ORDER BY AREA_TRABAJO $axorden";
+		}
+		
+	}elseif($axtipoorden=='CARGO'){
+		
+		if($axfiltro_buscar=''){
+			$SQLListar ="SELECT *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY AREA_ENCARGADO $axorden";	
+		}else{
+			$SQLListar ="SELECT *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' AND AREA_ENCARGADO LIKE '%".$axbuscar."%' ORDER BY AREA_ENCARGADO $axorden";
+		}
+	
+	
+	}elseif($axtipoorden=='TODOS'){
+		$SQLListar ="SELECT *,COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY ID_AREA ASC";
+	}
+
+}else{
+
+	if($axtipoorden==''){
+
+		$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' AND AREA_TRABAJO+' '+AREA_ENCARGADO LIKE '%".$axbuscar."%' ORDER BY ID_AREA $axorden";
+			
+	}elseif($axtipoorden=='AREA'){
+
+		if($axfiltro_buscar=''){
+			$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY AREA_TRABAJO $axorden";
+		}else{
+			$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' AND AREA_TRABAJO LIKE '%".$axbuscar."%' ORDER BY AREA_TRABAJO $axorden";
+
+		}
+	}elseif($axtipoorden=='CARGO'){
+
+		if($axfiltro_buscar=''){
+			$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' ORDER BY AREA_ENCARGADO $axorden";
+		}else{
+			$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa' AND AREA_ENCARGADO LIKE '%".$axbuscar."%' ORDER BY AREA_ENCARGADO $axorden";
+
+		}
+
+	}elseif($axtipoorden=='TODOS'){	
+	
+		$SQLListar ="SELECT *, COUNT(*) OVER () AS cant_registros FROM AREAS_TRABAJO WHERE ID_EMPRESA ='$axid_empresa'  AND AREA_TRABAJO+' '+AREA_ENCARGADO LIKE '%".$axbuscar."%' ORDER BY ID_AREA $axorden";
+
+	}
+
+	
+	
+}
+
+//echo $SQLListar.'<br>';
+
+$RSListar_c = odbc_exec($con, $SQLListar);
+
+    $axtotal_registros = contarRegistros($nombreTabla);
+    $fila_c = odbc_fetch_array($RSListar_c);
+    $axcant_registros = $fila_c['cant_registros'];
+//	echo $axverificar.'<br>';
+
+   if($axverificar ==10){
+
+   		$axcontador = $axverificar .' de '.'<a href="#" id="btn_areas_todos" data-tipoorden="TODOS" style="text-decoration:none; color:black;" title="Click para visualizar todos...">'.$axtotal_registros.'</a>';
+   		
+   }else if($axverificar ==''){
+
+   		$axcontador = $axcant_registros .' de '.'<a href="#" id="btn_areas_todos" data-tipoorden="TODOS" style="text-decoration:none; color:black;" title="Click para visualizar todos...">'.$axtotal_registros.'</a>';		   		
+   		
+   }
+
+   
+
+  
+
+
+$RSListar = odbc_exec($con,$SQLListar);
+$axicon_claro ='bi bi-funnel';
+$axicon_oscuro ='bi bi-funnel-fill';
+
+if( odbc_num_rows($RSListar) > 0 ){
+
+	echo "
+<table  class='table table-hover table-sm' >
+	<thead class='table-primary'>
+
+		<tr class='table-secondary'>
+            <th  style='text-align: right;' colspan ='13' >Mostrando $axcontador registros</th>         
+        </tr>
+
+		<tr>
+			<th style='text-align: center;'>Nº</th>			
+			<th style='text-align: left;'>AREA DE TRABAJO
+			 	<a href='#' id='btn_ordenar_area_asc' data-tipoorden='AREA'  data-filtro_buscar='AREA'> <b><i class='$axicon_claro' style='font-size:15px;'></i></a></b> 
+				<a href='#' id='btn_ordenar_area_desc' data-tipoorden='AREA' data-filtro_buscar='AREA'hidden> <b><i class='$axicon_oscuro' style='font-size:15px;'></i></a></b> 
+    
+			</th>
+			<th style='text-align: left;'>CARGOS
+				<a href='#' id='btn_ordenar_cargo_asc' data-tipoorden='CARGO' data-filtro_buscar='CARGO' > <b><i class='$axicon_claro' style='font-size:15px;'></i></a></b> 
+				<a href='#' id='btn_ordenar_cargo_desc' data-tipoorden='CARGO' data-filtro_buscar='CARGO'hidden> <b><i class='$axicon_oscuro' style='font-size:15px;'></i></a></b> 
+			</th>
+			<th style='text-align: center;'>ACCION</th>
+		</tr>
+	</thead>";
+
+	while ($fila =  odbc_fetch_array($RSListar)) {
+		
+		$it= $it+1;
+		$axid_area = $fila['ID_AREA'];		
+		$axarea_trabajo = $fila['AREA_TRABAJO'];
+		$axcargo = $fila['AREA_ENCARGADO'];			
+		
+
+		echo "
+ 		<tr>
+ 			<td style='text-align: center;' >$axid_area</td>
+ 			<td style='text-align: left;' >$axarea_trabajo</td>
+ 			<td style='text-align: left;' >$axcargo</td> 			
+ 			
+ 			<td style='text-align: center;'>
+ 				<div class='btn-group dropstart'>
+					<button type='button' class='btn btn-outline-dark btn-sm dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false'>Acción</button>
+					<ul class='dropdown-menu'>	
+					<div><hr class='dropdown-divider'></div>				  	
+					<a href='#' class='dropdown-item text-info' id='btn_editar_area' data-id='$axid_area' data-bs-toggle='modal' data-bs-target='#exampleModal'><b><i class='bi bi-pencil' ></i> Editar</a></b>
+					<a href='#' class='dropdown-item text-danger' id='btn_eliminar_area' data-id='$axid_area' ><b><i class='bi bi-trash3-fill'></i> Eliminar</a></b>
+					<div><hr class='dropdown-divider'></div>
+					</ul>
+				</div>
+
+ 			</td> 
+
+ 		</tr>";
+	}
+
+	echo"</table>";
+}

@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  /*background: url(../img/negocio_1.jpg);*/
+  /*background: url(../img/negocio_1.jpg);*/
+  background: url(../img/ferreteria.jpg);
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
