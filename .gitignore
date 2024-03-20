@@ -5,7 +5,7 @@ icon/
 img/
 imprimir/
 PHPMailer/
-phpqecode/
+phpqrcode/
 *.rar
 *.zip
 # probando
