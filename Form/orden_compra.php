@@ -613,7 +613,8 @@ $(document).ready(function() {
 /*
 ###########################
 ## MODIFICANDO GANDHY INICIO
-+ evento se activa cuando ponemos cantidad 123
++ evento se activa cuando ponemos cantidad
++ 21315454
 +
 ###########################
 **/
